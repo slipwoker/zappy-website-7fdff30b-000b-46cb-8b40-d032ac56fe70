@@ -1,0 +1,59 @@
+# Business — Generative Engine Optimization Map
+
+---
+
+## Pages
+
+### Home
+https://example.com
+Find english bulldog puppies, garden corner sofa, antiques &amp; more in your city. Buy, sell, barter or list free items across all US states. Start browsing now!
+
+### How It Works
+https://example.com/how-it-works
+Listing is simple! Post english bulldog puppies, furniture, vehicles &amp; more. Trade, barter or give away items free. Learn how our classifieds marketplace works today.
+
+### Categories & Cities
+https://example.com/categories
+Explore every category from english bulldog puppies and antiques to jobs and housing. Search by state and city for local deals. Thousands of listings await you!
+
+### Contact
+https://example.com/contact
+Need support with your classifieds marketplace account? Questions about selling english bulldog puppies or other items? Contact our team for fast, friendly assistance.
+
+### Products
+https://example.com/products
+Our Products - The Rummage Classifieds
+
+### Product Detail
+https://example.com/product/:slug
+Product Details - The Rummage Classifieds
+
+### Category
+https://example.com/category/:slug
+Products - The Rummage Classifieds
+
+## Legal & Policy
+
+### Privacy Policy
+https://example.com/privacy
+Information about how user data is collected, stored, and protected.
+
+### Terms & Conditions
+https://example.com/terms
+Legal terms describing service usage, rights, and policies.
+
+### Accessibility Statement
+https://example.com/accessibility
+Information about WCAG compliance and accessibility features.
+
+---
+
+# Business Context (for LLM understanding)
+
+## About Business
+---
+
+# Additional Resources
+
+- **Sitemap**: https://example.com/sitemap.xml
+- **Robots.txt**: https://example.com/robots.txt

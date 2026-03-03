@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow">
+    <title>Buy &amp; Sell English Bulldog Puppies Locally — The Rummage Classifieds</title>
+    <meta name="description" content="Find english bulldog puppies, garden corner sofa, antiques &amp; more in your city. Buy, sell, barter or list free items across all US states. Start browsing now!">
+    <meta name="keywords" content="english bulldog puppies, classifieds marketplace, garden corner sofa, local buy and sell, antiques">
+    
+    <!-- Favicons -->
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="/assets/favicon-48x48.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/assets/favicon-512x512.png">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+    <!-- Zappy Analytics -->
+<script>
+(function() {
+  'use strict';
+  
+  // Configuration
+  var config = {
+    websiteId: '7fdff30b-000b-46cb-8b40-d032ac56fe70',
+    apiUrl: 'https://api.zappy5.com/api/analytics/track',
+    sessionDuration: 30 * 60 * 1000, // 30 minutes
+    visitorDuration: 30 * 24 * 60 * 60 * 1000, // 30 days
+    trackPageViews: true,
+    trackClicks: true,
+    trackFormSubmissions: true
+  };
+  
+  // Generate or retrieve persistent visitor ID (30 days)
+  function getVisitorId() {
+    var visitorKey = 'zappy_visitor_' + config.websiteId;
+    var visitor = null;
+    
+    try {
+      visitor = localStorage.getItem(visitorKey);
+      if (visitor) {
+        var visitorData = JSON.parse(visitor);
+        var now = Date.now();
+        
+        // Check if visitor ID is still valid (30 days)
+        if (now - visitorData.created < config.visitorDuration) {
+          // Update last seen timestamp
+          visitorData.lastSeen = now;
+          localStorage.setItem(visitorKey, JSON.stringify(visitorData));
+          return visitorData.id;
+        }
+      }
+    } catch (e) {
+      console.warn('Zappy Analytics: LocalStorage not available');
+    }
+    
+    // Generate new visitor ID
+    var newVisitorId = 'zv_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+    
+    try {
+      localStorage.setItem(visitorKey, JSON.stringify({
+        id: newVisitorId,
+        created: Date.now(),
+        lastSeen: Date.now()
+      }));
+    } catch (e) {
+      // Continue without local storage
+    }
+    
+    return newVisitorId;
+  }
+  
+  // Generate or retrieve session ID (30 minutes)
+  function getSessionId() {
+    var sessionKey = 'zappy_session_' + config.websiteId;
+    var session = null;
+    
+    try {
+      session = sessionStorage.getItem(sessionKey);
+      if (session) {
+        var sessionData = JSON.parse(session);
+        var now = Date.now();
+        
+        // Check if session is still valid
+        if (now - sessionData.timestamp < config.sessionDuration) {
+          // Update timestamp
+          sessionData.timestamp = now;
+          sessionStorage.setItem(sessionKey, JSON.stringify(sessionData));
+          return sessionData.id;
+        }
+      }
+    } catch (e) {
+      console.warn('Zappy Analytics: SessionStorage not available');
+    }
+    
+    // Generate new session ID
+    var newSessionId = 'zs_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+    
+    try {
+      sessionStorage.setItem(sessionKey, JSON.stringify({
+        id: newSessionId,
+        timestamp: Date.now()
+      }));
+    } catch (e) {
+      // Continue without session storage
+    }
+    
+    return newSessionId;
+  }
+  
+  var visitorId = getVisitorId();
+  var sessionId = getSessionId();
+  
+  // Track an event
+  function trackEvent(eventType, data) {
+    data = data || {};
+    
+    var eventData = {
+      website_id: config.websiteId,
+      event_type: eventType,
+      page_path: window.location.pathname,
+      referrer: document.referrer || 'direct',
+      visitor_id: visitorId,
+      session_id: sessionId,
+      metadata: data
+    };
+    
+    // Use sendBeacon if available (better for page unload events)
+    if (navigator.sendBeacon) {
+      var blob = new Blob([JSON.stringify(eventData)], { type: 'application/json' });
+      navigator.sendBeacon(config.apiUrl, blob);
+    } else {
+      // Fallback to fetch
+      fetch(config.apiUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(eventData),
+        keepalive: true
+      }).catch(function(error) {
+        console.warn('Zappy Analytics: Failed to track event', error);
+      });
+    }
+  }
+  
+  // Track page view
+  if (config.trackPageViews) {
+    trackEvent('pageview', {
+      title: document.title,
+      url: window.location.href
+    });
+  }
+  
+  // Track clicks on important elements
+  if (config.trackClicks) {
+    document.addEventListener('click', function(e) {
+      var target = e.target;
+      
+      // Track button clicks (counted as actions)
+      if (target.tagName === 'BUTTON' || target.closest('button')) {
+        var button = target.tagName === 'BUTTON' ? target : target.closest('button');
+        trackEvent('click', {
+          element: 'button',
+          text: button.textContent.trim().substring(0, 100),
+          id: button.id || null,
+          class: button.className || null
+        });
+      }
+      
+      // Track link clicks (navigation - not counted as actions)
+      else if (target.tagName === 'A' || target.closest('a')) {
+        var link = target.tagName === 'A' ? target : target.closest('a');
+        trackEvent('navigation', {
+          element: 'link',
+          text: link.textContent.trim().substring(0, 100),
+          href: link.href,
+          external: link.hostname !== window.location.hostname
+        });
+      }
+    }, true);
+  }
+  
+  // Track form submissions
+  if (config.trackFormSubmissions) {
+    document.addEventListener('submit', function(e) {
+      var form = e.target;
+      
+      trackEvent('form_submit', {
+        form_id: form.id || null,
+        form_name: form.name || null,
+        form_action: form.action || null,
+        form_method: form.method || 'GET'
+      });
+    }, true);
+  }
+  
+  // Track time on page (send on page unload)
+  var pageLoadTime = Date.now();
+  
+  window.addEventListener('beforeunload', function() {
+    var timeOnPage = Math.floor((Date.now() - pageLoadTime) / 1000); // in seconds
+    
+    trackEvent('page_unload', {
+      time_on_page: timeOnPage,
+      page_path: window.location.pathname
+    });
+  });
+  
+  // Expose tracking function globally for custom events
+  window.zappyAnalytics = {
+    track: trackEvent,
+    getVisitorId: function() { return visitorId; },
+    getSessionId: function() { return sessionId; }
+  };
+  
+})();
+</script>
+<!-- End Zappy Analytics -->
+    <meta property="og:title" content="Buy &amp; Sell English Bulldog Puppies Locally — The Rummage Classifieds">
+  <meta property="og:description" content="Find english bulldog puppies, garden corner sofa, antiques &amp; more in your city. Buy, sell, barter or list free items across all US states. Start browsing now!">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="en_US">
+  
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Buy &amp; Sell English Bulldog Puppies Locally — The Rummage Classifieds">
+  <meta name="twitter:description" content="Find english bulldog puppies, garden corner sofa, antiques &amp; more in your city. Buy, sell, barter or list free items across all US states. Start browsing now!">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="/assets/favicon-48x48.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/assets/favicon-512x512.png">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+    <!-- Cookie Consent -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vanilla-cookieconsent@3/dist/cookieconsent.css">
+    <script src="https://cdn.jsdelivr.net/npm/vanilla-cookieconsent@3/dist/cookieconsent.umd.js"></script>
+    <!-- Mickidum Accessibility Toolbar -->
+    <script src="https://cdn.jsdelivr.net/gh/mickidum/acc_toolbar/acctoolbar/acctoolbar.min.js"></script>
+    <link rel="stylesheet" href="/styles.css">
+
+    <style id="zappy-dropdown-submenu-styles">
+      /* ========== DESKTOP DROPDOWN SUBMENU STYLES ========== */
+      /* Base styles for dropdown submenus - parent must be positioned */
+      .nav-menu li:has(.sub-menu), nav li:has(.sub-menu), .navbar li:has(.sub-menu), #navMenu li:has(.sub-menu) { position: relative; }
+      /* Submenu base - hidden by default */
+      .nav-menu .sub-menu, nav .sub-menu, .navbar .sub-menu, #navMenu .sub-menu { display: block !important; position: absolute !important; top: 100%; left: 0; min-width: 220px; background: white; border-radius: 8px; box-shadow: 0 8px 25px rgba(0,0,0,0.15); padding: 8px 0; opacity: 0; visibility: hidden; transform: translateY(10px); transition: all 0.3s ease; z-index: 1000; list-style: none; pointer-events: none; }
+      /* CRITICAL: Desktop hover styles to show dropdown */
+      .nav-menu li:hover > .sub-menu, nav li:hover > .sub-menu, .navbar li:hover > .sub-menu, #navMenu li:hover > .sub-menu { opacity: 1 !important; visibility: visible !important; transform: translateY(0) !important; pointer-events: auto !important; }
+      /* Submenu item styling */
+      .sub-menu li { list-style: none; margin: 0; padding: 0; }
+      .sub-menu a { display: block !important; padding: 10px 16px !important; color: #333 !important; font-weight: 500; text-decoration: none; white-space: nowrap; transition: background-color 0.2s; }
+      .sub-menu a:hover { background-color: #f5f5f5; }
+      /* RTL (Hebrew/Arabic) dropdown positioning */
+      [dir="rtl"] .nav-menu .sub-menu, [dir="rtl"] nav .sub-menu, [dir="rtl"] .navbar .sub-menu, html[lang="he"] .nav-menu .sub-menu, html[lang="he"] nav .sub-menu, html[lang="he"] .navbar .sub-menu, html[lang="ar"] .nav-menu .sub-menu, html[lang="ar"] nav .sub-menu, html[lang="ar"] .navbar .sub-menu { left: auto !important; right: 0 !important; }
+      /* Hide empty dropdown menus */
+      .sub-menu:empty, .sub-menu:not(:has(li:not(.zappy-hidden-menu-item))), .sub-menu:not(:has(li)) { display: none !important; opacity: 0 !important; visibility: hidden !important; pointer-events: none !important; }
+      /* Desktop: show submenu on Menu Group hover */
+      li:has(.menu-group-title):hover > .sub-menu { opacity: 1 !important; visibility: visible !important; transform: translateY(0) !important; pointer-events: auto !important; }
+      /* Menu Group title styling */
+      .nav-menu > li > .menu-group-title, #navMenu > li > .menu-group-title { display: inline-block; padding: 0.5rem 1rem; cursor: default; user-select: none; }
+      
+      /* ========== MOBILE SUBMENU STYLES ========== */
+      @media (max-width: 768px) {
+        .nav-menu .sub-menu, nav .sub-menu, .navbar .sub-menu, #navMenu .sub-menu { position: static !important; transform: none !important; box-shadow: none !important; background: transparent !important; max-height: 0; overflow: hidden; opacity: 0; visibility: hidden; transition: max-height 0.3s ease, opacity 0.3s ease; padding: 0 !important; border-radius: 0 !important; }
+        .sub-menu.mobile-expanded { max-height: 500px !important; opacity: 1 !important; visibility: visible !important; padding: 8px 0 8px 16px !important; }
+        [dir="rtl"] .sub-menu.mobile-expanded, html[lang="he"] .sub-menu.mobile-expanded { padding: 8px 16px 8px 0 !important; }
+        /* Disable hover behavior on mobile */
+        .nav-menu li:hover > .sub-menu, nav li:hover > .sub-menu, .navbar li:hover > .sub-menu, #navMenu li:hover > .sub-menu { opacity: 0; visibility: hidden; pointer-events: none; }
+        .nav-menu li > .sub-menu.mobile-expanded, nav li > .sub-menu.mobile-expanded, .navbar li > .sub-menu.mobile-expanded, #navMenu li > .sub-menu.mobile-expanded { opacity: 1 !important; visibility: visible !important; pointer-events: auto !important; }
+        .nav-menu li:has(.sub-menu), nav li:has(.sub-menu), .navbar li:has(.sub-menu), #navMenu li:has(.sub-menu) { display: flex !important; flex-wrap: wrap !important; align-items: center !important; position: relative !important; min-height: 44px !important; }
+        .nav-menu li:has(.sub-menu) > a, nav li:has(.sub-menu) > a, .navbar li:has(.sub-menu) > a, #navMenu li:has(.sub-menu) > a { flex: 1 !important; min-width: 0 !important; }
+        .nav-menu li:has(.sub-menu) > .menu-group-title, nav li:has(.sub-menu) > .menu-group-title, .navbar li:has(.sub-menu) > .menu-group-title, #navMenu li:has(.sub-menu) > .menu-group-title { flex: 1 !important; min-width: 0 !important; padding: 0 !important; line-height: inherit !important; }
+        .nav-menu li:has(.sub-menu) > .sub-menu, nav li:has(.sub-menu) > .sub-menu, .navbar li:has(.sub-menu) > .sub-menu, #navMenu li:has(.sub-menu) > .sub-menu { flex-basis: 100% !important; width: 100% !important; }
+        .nav-menu li:has(.sub-menu) > a [class*="chevron"], .nav-menu li:has(.sub-menu) > a [class*="arrow"], .nav-menu li:has(.sub-menu) > a .fa-chevron-down, .nav-menu li:has(.sub-menu) > a .fa-angle-down, nav li:has(.sub-menu) > a [class*="chevron"], nav li:has(.sub-menu) > a [class*="arrow"], #navMenu li:has(.sub-menu) > a [class*="chevron"], #navMenu li:has(.sub-menu) > a [class*="arrow"] { display: none !important; visibility: hidden !important; }
+        .mobile-submenu-toggle { display: flex !important; align-items: center !important; justify-content: center !important; width: 44px !important; height: auto !important; background: transparent !important; border: none !important; cursor: pointer !important; color: var(--text-dark) !important; position: static !important; flex-shrink: 0 !important; align-self: stretch !important; z-index: 2 !important; padding: 0 !important; margin: 0 !important; }
+        .mobile-submenu-toggle::after { content: '' !important; width: 0 !important; height: 0 !important; border-left: 6px solid transparent !important; border-right: 6px solid transparent !important; border-top: 7px solid currentColor !important; transition: transform 0.3s ease !important; }
+        .mobile-submenu-toggle.expanded::after { transform: rotate(180deg) !important; }
+        .sub-menu a { padding: 10px 0 !important; display: block !important; color: var(--text-dark) !important; }
+        .navbar .sub-menu li a, nav.navbar .sub-menu li a, .zappy-products-dropdown .sub-menu a { color: var(--text-dark) !important; }
+      }
+      @media (min-width: 769px) { .mobile-submenu-toggle { display: none !important; } }
+    </style>
+
+    <style id="zappy-widget-visibility">
+      #mic-access-tool-general-button, .mic-access-tool-general-button,
+      #mic-init-access-tool .mic-access-tool-general-button, #mic-init-access-tool #mic-access-tool-general-button,
+      ._access-icon, #mic-access-tool-box, .mic-access-tool-box,
+      #mic-init-access-tool #mic-access-tool-box, div[id*="mic-access-tool-box"], ._access-menu {
+        display: none !important; visibility: hidden !important; opacity: 0 !important; pointer-events: none !important;
+      }
+    </style>
+</head>
+<body>
+
+
+    <div class="mobile-search-panel" id="mobile-search-panel">
+      <div class="search-wrapper">
+        <input type="text" id="mobile-search-input" placeholder="Search products..." autocomplete="off">
+        <button class="search-submit" id="mobile-search-submit" title="Search">
+          <svg width="20" height="20" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><path d="M21 21l-4.35-4.35"></path></svg>
+        </button>
+        <button class="close-search" id="close-mobile-search">
+          <svg width="20" height="20" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"></path></svg>
+        </button>
+      </div>
+      <div class="search-results" id="mobile-search-results"></div>
+    </div>
+  
+<script>window.ZAPPY_WEBSITE_ID = "7fdff30b-000b-46cb-8b40-d032ac56fe70";window.ZAPPY_API_BASE = (window.location.pathname.includes('/preview') ? "https://api.zappy5.com" : "https://api.zappy5.com");</script>
+  <nav class="navbar">
+  <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
+    <svg class="hamburger-icon" width="24" height="24" viewbox="0 0 24 24" fill="none">
+      <path d="M3 12h18M3 6h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+    </svg>
+    <svg class="close-icon" width="24" height="24" viewbox="0 0 24 24" fill="none" style="display:none;">
+      <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+    </svg>
+  </button>
+  
+  <button class="phone-header-btn" aria-label="Call">
+    <svg width="20" height="20" viewbox="0 0 24 24" fill="currentColor">
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+    </svg>
+  </button>
+  
+  <div class="nav-container">
+    <div class="nav-brand">
+      <a href="/" class="logo-link">
+        <img src="/assets/the-rummage-classifieds-online-marketplace-logo.webp" alt="The Rummage Classifieds" class="logo">
+      </a>
+    </div>
+    
+    <ul class="nav-menu" id="navMenu">
+
+    <li class="menu-item-has-children zappy-products-dropdown">
+      <a href="/products">
+        Products
+        <svg class="dropdown-arrow" width="12" height="12" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M6 9l6 6 6-6"></path>
+        </svg>
+      </a>
+      <ul class="sub-menu" id="zappy-nav-category-links">
+        <li><a href="/products">All Products</a></li>
+        <!-- Categories will be loaded dynamically -->
+      </ul>
+    </li>
+  <li><a href="/how-it-works">How It Works</a></li><li><a href="/categories">Categories &amp; Cities</a></li><li><a href="/contact">Contact</a></li></ul><div class="nav-ecommerce-icons nav-icons-left"><div class="nav-search-box">
+    <input type="text" class="nav-search-input" id="nav-search-input" placeholder="Search products..." autocomplete="off">
+    <button class="nav-search-btn" id="nav-search-btn" title="Search">
+      <svg class="search-icon" width="18" height="18" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><path d="M21 21l-4.35-4.35"></path></svg>
+    </button>
+    <div class="nav-search-results" id="nav-search-results"></div>
+  </div></div><div class="nav-ecommerce-icons nav-icons-right"><button class="nav-search-toggle" id="mobile-search-toggle" title="Search"><svg width="18" height="18" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><path d="M21 21l-4.35-4.35"></path></svg></button></div>
+    
+    
+  </div>
+</nav>
+
+    <nav class="zappy-catalog-menu ltr" id="zappy-catalog-menu" dir="ltr">
+      <div class="catalog-menu-container">
+        <a href="/products" class="catalog-menu-item catalog-menu-all">All Products</a>
+        <div class="catalog-menu-categories" id="zappy-category-links">
+          <!-- Categories will be loaded dynamically -->
+        </div>
+      </div>
+    </nav>
+  
+  
+  <main>
+    <section class="home-hero-section" data-layout-spec="Home-Hero" data-hero-type="fullscreen-scrim">
+  <!-- Background Image Layer -->
+  <div class="home-hero-bg-wrapper">
+    <img data-hero-bg="true" data-placeholder="home-hero-bg" data-context="Cinematic night market scene with vibrant neon signs in cyan and purple hues reflecting on wet asphalt, bokeh lights in background creating premium urban atmosphere, shallow depth of field, moody dark tones with pops of electric blue and magenta lighting, professional commercial photography style for online marketplace platform" class="home-hero-bg-image" width="1920" height="1080" src="/assets/site-home-hero-bg.webp" alt="Night market with neon lights reflecting on wet streets">
+  </div>
+
+  <!-- Gradient Scrim Overlay -->
+  <div class="home-hero-scrim" aria-hidden="true"></div>
+
+  <!-- Content Overlay Group -->
+  <div class="home-hero-content-wrapper">
+    <div class="home-hero-content">
+      <h1 class="home-hero-headline">Local deals, lit up.</h1>
+      <h3 class="home-hero-subtitle">A nationwide classifieds destination built for every state and city—sell, barter, or give away items with a premium local feel.</h3>
+      <div class="home-hero-cta-group">
+        <a href="/contact" class="home-hero-btn home-hero-btn-primary">Contact us</a>
+        <a href="/categories" class="home-hero-btn home-hero-btn-secondary">Explore categories</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom Divider: Neon Blade Cut -->
+  <div class="home-hero-divider-wrapper">
+    <svg data-no-icon-edit="true" aria-hidden="true" viewbox="0 0 1200 100" preserveaspectratio="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="neon-blade-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" style="stop-color:#00D4FF;stop-opacity:0.8"></stop>
+          <stop offset="50%" style="stop-color:#7C3AED;stop-opacity:0.9"></stop>
+          <stop offset="100%" style="stop-color:#FFD166;stop-opacity:0.7"></stop>
+        </linearGradient>
+        <filter id="neon-glow">
+          <feGaussianBlur stddeviation="3" result="coloredBlur"></feGaussianBlur>
+          <feMerge>
+            <feMergeNode in="coloredBlur"></feMergeNode>
+            <feMergeNode in="SourceGraphic"></feMergeNode>
+          </feMerge>
+        </filter>
+      </defs>
+      <!-- Dark fill matching next section -->
+      <path d="M0,100 L0,45 L1200,25 L1200,100 Z" fill="var(--bg-light)"></path>
+      <!-- Neon edge line -->
+      <path d="M0,45 L1200,25" stroke="url(#neon-blade-gradient)" stroke-width="2" fill="var(--bg-light)" filter="url(#neon-glow)"></path>
+    </svg>
+  </div>
+</section>
+
+    <section class="featured-products-section" id="featured-products" data-zappy-dynamic="true">
+      <div class="container">
+        <h2 class="section-title">Featured Products</h2>
+        <div class="product-grid featured-grid" id="zappy-featured-products">
+          <div class="loading-products">Loading products...</div>
+        </div>
+        <div class="view-all-products">
+          <a href="/products" class="btn btn-primary">View All Products →</a>
+        </div>
+      </div>
+    </section>
+  
+
+    <section class="featured-categories-section" id="featured-categories" data-zappy-dynamic="true">
+      <div class="container">
+        <h2 class="section-title">Shop by Category</h2>
+        <div class="category-blocks" id="zappy-featured-categories">
+          <div class="loading-categories">Loading products...</div>
+        </div>
+      </div>
+    </section>
+  
+
+<section class="home-capabilities-section" data-layout-spec="Home-capabilities">
+  <div class="capabilities-container">
+    <div class="capabilities-content">
+      <h2>A modern classifieds experience for every city.</h2>
+      <p class="capabilities-intro">The platform is designed to make local exchange feel fast and trustworthy—whether it's cash, barter, or free pickup.</p>
+      
+      <div class="capability-block">
+        <h3>Post with confidence</h3>
+        <p>Clear categories, strong listing presentation, and frictionless local context.</p>
+      </div>
+      
+      <div class="capability-block">
+        <h3>Scan fast, decide faster</h3>
+        <p>Airy cards, big prices, and consistent details for quick comparison.</p>
+      </div>
+      
+      <div class="capability-block">
+        <h3>Support every deal type</h3>
+        <p>Traditional sales, barter-friendly listings, and free items—presented with equal clarity.</p>
+      </div>
+    </div>
+    
+    <div class="capabilities-imagery">
+      <img data-placeholder="home-capabilities-image-1" data-context="Modern dark-themed classifieds marketplace interface screenshot showing a clean listings grid view with filter sidebar on the left containing category checkboxes and price sliders, and airy product cards on the right displaying items like furniture and electronics with clear prices, thumbnail images, and location tags. Dark UI with cyan and purple accent colors, professional UX design, desktop view." width="600" height="700" src="/assets/site-home-capabilities-image-1.webp" alt="The Rummage Classifieds modern interface showing listings grid with filters">
+    </div>
+  </div>
+  
+  <div class="capabilities-divider-wrapper">
+    <svg data-no-icon-edit="true" aria-hidden="true" viewbox="0 0 1200 120" preserveaspectratio="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="capabilities-fade-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" style="stop-color:var(--bg-light);stop-opacity:1"></stop>
+          <stop offset="100%" style="stop-color:var(--bg-dark);stop-opacity:1"></stop>
+        </linearGradient>
+        <pattern id="capabilities-dot-pattern" x="0" y="0" width="24" height="24" patternunits="userSpaceOnUse">
+          <circle cx="1" cy="1" r="1" fill="var(--border-light)" opacity="0.3"></circle>
+        </pattern>
+      </defs>
+      <rect x="0" y="0" width="1200" height="120" fill="url(#capabilities-fade-gradient)"></rect>
+      <rect x="0" y="0" width="1200" height="120" fill="url(#capabilities-dot-pattern)" opacity="0.4" style="mask: linear-gradient(to bottom, white 0%, transparent 100%)"></rect>
+    </svg>
+  </div>
+</section>
+
+<section class="home-showcase-section" data-layout-spec="Home-showcase"><div class="showcase-container"><div class="showcase-header"><h2>Feels local everywhere.</h2><p>A consistent experience across states and cities, designed for quick scanning and confident meetups.</p></div><div class="category-chips"><button class="chip">For Sale</button><button class="chip">Housing</button><button class="chip">Jobs</button><button class="chip">Services</button><button class="chip">Community</button><button class="chip">Vehicles</button><button class="chip">Antiques</button><button class="chip">Free</button><button class="chip">Barter</button><button class="chip chip-more">More categories</button></div><div class="listings-wrapper"><div class="listings-grid"><article class="listing-card"><div class="listing-thumbnail"><img data-placeholder="home-showcase-image-1" data-context="Vintage antique wooden furniture piece like a dresser or cabinet, warm wood tones, for a classifieds marketplace listing photo, clean white background, product photography style" width="600" height="450" src="/assets/site-home-showcase-image-1.webp" alt="Antique furniture listing"></div><div class="listing-details"><div class="listing-top-row"><span class="listing-price">$1,200</span><span class="listing-badge badge-barter">Barter</span></div><h3 class="listing-title">Victorian Oak Dresser</h3><p class="listing-meta">Portland, OR • 2 miles • Posted today</p></div></article><article class="listing-card"><div class="listing-thumbnail"><img data-placeholder="home-showcase-image-2" data-context="English bulldog puppies playing together, adorable brown and white puppies, for a classifieds pet listing photo, soft natural lighting, warm background" width="600" height="450" src="/assets/site-home-showcase-image-2.webp" alt="English bulldog puppies listing"></div><div class="listing-details"><div class="listing-top-row"><span class="listing-price">$45</span><span class="listing-badge badge-hot">Hot Deal</span></div><h3 class="listing-title">English Bulldog Puppies</h3><p class="listing-meta">Austin, TX • 5 miles • Posted 2h ago</p></div></article><article class="listing-card"><div class="listing-thumbnail"><img data-placeholder="home-showcase-image-3" data-context="Modern garden corner sofa set with cushions, outdoor patio furniture, grey or beige tones, for a classifieds marketplace listing, bright daylight photo" width="600" height="450" src="/assets/site-home-showcase-image-3.webp" alt="Garden corner sofa listing"></div><div class="listing-details"><div class="listing-top-row"><span class="listing-price">Free</span><span class="listing-badge badge-free">Free</span></div><h3 class="listing-title">Garden Corner Sofa Set</h3><p class="listing-meta">Seattle, WA • 1 mile • Posted today</p></div></article><article class="listing-card"><div class="listing-thumbnail"><img data-placeholder="home-showcase-image-4" data-context="Vintage bicycle leaning against wall, classic road bike with chrome details, for a classifieds marketplace listing photo, urban setting" width="600" height="450" src="/assets/site-home-showcase-image-4.webp" alt="Vintage bicycle listing"></div><div class="listing-details"><div class="listing-top-row"><span class="listing-price">$280</span><span class="listing-badge badge-new">New Today</span></div><h3 class="listing-title">Vintage Road Bike</h3><p class="listing-meta">Brooklyn, NY • 3 miles • Posted 1h ago</p></div></article><article class="listing-card"><div class="listing-thumbnail"><img data-placeholder="home-showcase-image-5" data-context="Professional camera equipment, DSLR camera with lens, for a classifieds marketplace electronics listing, clean product shot on neutral background" width="600" height="450" src="/assets/site-home-showcase-image-5.webp" alt="Camera equipment listing"></div><div class="listing-details"><div class="listing-top-row"><span class="listing-price">$850</span><span class="listing-badge badge-pickup">Local Pickup</span></div><h3 class="listing-title">Canon DSLR Bundle</h3><p class="listing-meta">Denver, CO • 4 miles • Posted 3h ago</p></div></article><article class="listing-card"><div class="listing-thumbnail"><img data-placeholder="home-showcase-image-6" data-context="Handmade pottery ceramic vase with artistic glaze, artisan craft item for a classifieds marketplace listing, studio photography with soft shadows" width="600" height="450" src="/assets/site-home-showcase-image-6.webp" alt="Handmade pottery listing"></div><div class="listing-details"><div class="listing-top-row"><span class="listing-price">$65</span><span class="listing-badge badge-hot">Hot Deal</span></div><h3 class="listing-title">Handcrafted Ceramic Vase</h3><p class="listing-meta">San Francisco, CA • 2 miles • Posted today</p></div></article></div><div class="map-drawer" aria-hidden="true"><svg data-no-icon-edit="true" viewbox="0 0 400 600" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="mapGradient" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:rgba(0,212,255,0.08);stop-opacity:1"></stop><stop offset="100%" style="stop-color:rgba(124,58,237,0.06);stop-opacity:1"></stop></linearGradient></defs><rect width="400" height="600" fill="url(#mapGradient)"></rect><line x1="50" y1="0" x2="50" y2="600" stroke="rgba(255,255,255,0.08)" stroke-width="1"></line><line x1="150" y1="0" x2="150" y2="600" stroke="rgba(255,255,255,0.08)" stroke-width="1"></line><line x1="250" y1="0" x2="250" y2="600" stroke="rgba(255,255,255,0.08)" stroke-width="1"></line><line x1="350" y1="0" x2="350" y2="600" stroke="rgba(255,255,255,0.08)" stroke-width="1"></line><line x1="0" y1="100" x2="400" y2="100" stroke="rgba(255,255,255,0.08)" stroke-width="1"></line><line x1="0" y1="200" x2="400" y2="200" stroke="rgba(255,255,255,0.08)" stroke-width="1"></line><line x1="0" y1="300" x2="400" y2="300" stroke="rgba(255,255,255,0.08)" stroke-width="1"></line><line x1="0" y1="400" x2="400" y2="400" stroke="rgba(255,255,255,0.08)" stroke-width="1"></line><line x1="0" y1="500" x2="400" y2="500" stroke="rgba(255,255,255,0.08)" stroke-width="1"></line><circle cx="120" cy="180" r="5" fill="var(--primary)" opacity="0.6"></circle><circle cx="280" cy="320" r="5" fill="var(--accent)" opacity="0.6"></circle><circle cx="200" cy="450" r="5" fill="var(--secondary)" opacity="0.6"></circle><circle cx="90" cy="380" r="5" fill="var(--primary)" opacity="0.6"></circle><circle cx="310" cy="150" r="5" fill="var(--accent)" opacity="0.6"></circle></svg></div></div></div><div class="showcase-divider-wrapper"><svg data-no-icon-edit="true" aria-hidden="true" viewbox="0 0 1200 80" preserveaspectratio="none" xmlns="http://www.w3.org/2000/svg"><defs><radialGradient id="goldSpeckle1" cx="50%" cy="50%" r="50%"><stop offset="0%" style="stop-color:#FFD166;stop-opacity:0.3"></stop><stop offset="100%" style="stop-color:#FFD166;stop-"></stop></radialGradient><radialGradient id="goldSpeckle2" cx="50%" cy="50%" r="50%"><stop offset="0%" style="stop-color:#FFD166;stop-opacity:0.25"></stop><stop offset="100%" style="stop-color:#FFD166;stop-"></stop></radialGradient><radialGradient id="goldSpeckle3" cx="50%" cy="50%" r="50%"><stop offset="0%" style="stop-color:#FFD166;stop-opacity:0.2"></stop><stop offset="100%" style="stop-color:#FFD166;stop-"></stop></radialGradient></defs><path d="M0,80 L0,45 Q50,38 100,44 T200,40 Q250,45 300,38 T400,43 Q450,40 500,45 T600,38 Q650,43 700,40 T800,45 Q850,38 900,43 T1000,40 Q1050,45 1100,38 T1200,43 L1200,80 Z" fill="var(--bg-light)"></path><circle cx="600" cy="42" r="8" fill="url(#goldSpeckle1)"></circle><circle cx="520" cy="38" r="6" fill="url(#goldSpeckle2)"></circle><circle cx="680" cy="40" r="7" fill="url(#goldSpeckle3)"></circle><circle cx="750" cy="44" r="5" fill="url(#goldSpeckle2)"></circle></svg></div></section>
+
+<section class="home-testimonials-section" data-layout-spec="Home-testimonials">
+  <div class="home-testimonials-container">
+    <div class="home-testimonials-intro">
+      <h2>Trusted in real neighborhoods.</h2>
+      <p>People come for the deals and stay for the clarity and local feel.</p>
+    </div>
+    <div class="home-testimonials-grid">
+      <div class="home-testimonials-card">
+        <h3>Jordan R., Phoenix</h3>
+        <div class="home-testimonials-signal-line"></div>
+        <p>The layout makes it easy to compare listings quickly. I found what I needed locally the same day.</p>
+      </div>
+      <div class="home-testimonials-card">
+        <h3>Mina S., Columbus</h3>
+        <div class="home-testimonials-signal-line"></div>
+        <p>Barter listings feel just as straightforward as regular sales. It's a great community vibe.</p>
+      </div>
+      <div class="home-testimonials-card">
+        <h3>Chris T., Tacoma</h3>
+        <div class="home-testimonials-signal-line"></div>
+        <p>Free pickup items are clearly marked and not buried. It feels organized instead of chaotic.</p>
+      </div>
+    </div>
+  </div>
+  <div class="home-testimonials-divider-wrapper">
+    <svg data-no-icon-edit="true" aria-hidden="true" viewbox="0 0 1200 60" preserveaspectratio="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <pattern id="filmPerf" x="0" y="0" width="80" height="60" patternunits="userSpaceOnUse">
+          <rect x="10" y="50" width="12" height="10" rx="2" fill="var(--bg-dark)"></rect>
+          <rect x="30" y="50" width="12" height="10" rx="2" fill="var(--bg-dark)"></rect>
+          <rect x="50" y="50" width="12" height="10" rx="2" fill="var(--bg-dark)"></rect>
+        </pattern>
+      </defs>
+      <rect x="0" y="0" width="1200" height="60" fill="url(#filmPerf)"></rect>
+      <path d="M0,60 L0,20 Q100,18 200,22 T400,18 Q500,22 600,18 T800,22 Q900,18 1000,22 T1200,20 L1200,60 Z" fill="#121418"></path>
+    </svg>
+  </div>
+</section>
+
+<section class="home-cta-section" data-layout-spec="Home-cta">
+  <div class="home-cta-container">
+    <div class="home-cta-content">
+      <h2>Bring The Rummage Classifieds to your audience.</h2>
+      <p>Want to feature your city, partner on community initiatives, or discuss launch strategy? Reach out and we'll respond quickly.</p>
+      <div class="home-cta-buttons">
+        <a href="/contact" class="btn-primary">Contact us</a>
+        <a href="/how-it-works" class="btn-secondary">How it works</a>
+      </div>
+    </div>
+  </div>
+</section>
+  </main>
+  
+  <footer class="site-footer"><div class="footer-container"><div class="footer-top"><div class="footer-column footer-about"><img src="/assets/the-rummage-classifieds-online-marketplace-logo.webp" alt="The Rummage Classifieds" class="logo"><p class="footer-description">Your trusted online marketplace for buying and selling locally. Connect with buyers and sellers in your community.</p></div><div class="footer-column footer-links"><h3 class="footer-heading">Quick Links</h3><ul class="footer-nav"><li><a href="/how-it-works">How It Works</a></li><li><a href="/categories">Categories &amp; Cities</a></li><li><a href="/contact">Contact</a></li></ul></div><div class="footer-column footer-contact"><h3 class="footer-heading">Contact Us</h3><ul class="contact-list"><li><i class="fas fa-envelope"></i><a href="mailto:[business_email]">[business_email]</a></li><li><i class="fas fa-phone"></i><a href="tel:[business_phone]">[business_phone]</a></li><li><a href="/"><i class="fas fa-map-marker-alt"></i><span>[business_address]</span></a></li></ul></div><div class="footer-column footer-social"><h3 class="footer-heading">Follow Us</h3><div class="social-links"><a href="[facebook_handle]" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a><a href="[instagram_handle]" aria-label="Instagram"><i class="fab fa-instagram"></i></a><a href="[whatsapp_handle]" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a></div></div></div><div class="footer-bottom"><div class="footer-bottom-left"><p class="copyright">© 2026 The Rummage Classifieds. All rights reserved.</p></div><div class="footer-bottom-right"><ul class="legal-links"><li><a href="/privacy">Privacy Policy</a></li><li><a href="/terms">Terms &amp; Conditions</a><span class="separator">|</span>
+            <a href="/return-policy" aria-label="Return Policy">
+              Return Policy
+            </a></li><li><a href="/accessibility">Accessibility</a></li></ul><a href="https://zappy5.com" target="_blank" class="zappy-attribution">Generated by Zappy</a></div></div></div></footer>
+  
+  <a href="https://wa.me/[whatsapp_handle]" class="whatsapp-float" aria-label="WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+  
+  <div data-integration="accessibility:toolbar"></div>
+
+    <script src="/script.js"></script>
+
+    <script id="zappy-mobile-submenu-script">
+    (function() {
+      function initMobileSubmenuToggles() {
+        if (window.innerWidth > 768) {
+          document.querySelectorAll('.mobile-submenu-toggle').forEach(function(btn) { btn.remove(); });
+          document.querySelectorAll('.sub-menu.mobile-expanded').forEach(function(menu) { menu.classList.remove('mobile-expanded'); });
+          return;
+        }
+        var items = document.querySelectorAll('.nav-menu li:has(.sub-menu), nav li:has(.sub-menu), .navbar li:has(.sub-menu), #navMenu li:has(.sub-menu)');
+        items.forEach(function(li) {
+          if (li.querySelector('.mobile-submenu-toggle')) return;
+          var submenu = li.querySelector('.sub-menu');
+          var parentLink = li.querySelector(':scope > a');
+          if (!submenu || !parentLink) return;
+          var toggleBtn = document.createElement('button');
+          toggleBtn.className = 'mobile-submenu-toggle';
+          toggleBtn.setAttribute('aria-label', 'Toggle submenu');
+          toggleBtn.setAttribute('type', 'button');
+          parentLink.insertAdjacentElement('afterend', toggleBtn);
+          toggleBtn.addEventListener('click', function(e) {
+            e.preventDefault(); e.stopPropagation();
+            document.querySelectorAll('.sub-menu.mobile-expanded').forEach(function(menu) {
+              if (menu !== submenu) { menu.classList.remove('mobile-expanded'); var t = menu.parentElement.querySelector('.mobile-submenu-toggle'); if(t) t.classList.remove('expanded'); }
+            });
+            submenu.classList.toggle('mobile-expanded');
+            toggleBtn.classList.toggle('expanded');
+          });
+        });
+      }
+      if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', initMobileSubmenuToggles); }
+      else { initMobileSubmenuToggles(); }
+      var resizeTimer; window.addEventListener('resize', function() { clearTimeout(resizeTimer); resizeTimer = setTimeout(initMobileSubmenuToggles, 250); });
+      // Re-initialize when mobile menu becomes visible (MutationObserver)
+      var observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+          if (mutation.type === 'attributes') {
+            var target = mutation.target;
+            if (target.classList && (target.classList.contains('active') || target.classList.contains('open'))) {
+              setTimeout(initMobileSubmenuToggles, 100);
+            }
+          }
+        });
+      });
+      setTimeout(function() {
+        document.querySelectorAll('.mobile-menu, .nav-menu, #navMenu, nav').forEach(function(menu) {
+          observer.observe(menu, { attributes: true, attributeFilter: ['class', 'style'] });
+        });
+      }, 500);
+    })();
+    </script>
+
+    <script id="zappy-navbar-scroll-effect">
+    (function(){var nb=document.querySelector('nav.navbar,.navbar:not(.zappy-catalog-menu)');var cm=document.querySelector('.zappy-catalog-menu');if(!nb)return;var fb='rgba(18,20,24,0.85)';var th=60;nb.style.transition='background 0.3s ease,backdrop-filter 0.3s ease,-webkit-backdrop-filter 0.3s ease,box-shadow 0.3s ease';if(cm)cm.style.transition='background 0.3s ease,backdrop-filter 0.3s ease,-webkit-backdrop-filter 0.3s ease';function onS(){var y=window.scrollY||window.pageYOffset;if(y>th){nb.style.background=fb;nb.style.backdropFilter='blur(12px)';nb.style.webkitBackdropFilter='blur(12px)';nb.style.boxShadow='0 2px 16px rgba(0,0,0,0.12)';if(cm){cm.style.background=fb;cm.style.backdropFilter='blur(12px)';cm.style.webkitBackdropFilter='blur(12px)';}}else{nb.style.background='transparent';nb.style.backdropFilter='none';nb.style.webkitBackdropFilter='none';nb.style.boxShadow='none';if(cm){cm.style.background='transparent';cm.style.backdropFilter='none';cm.style.webkitBackdropFilter='none';}}}window.addEventListener('scroll',onS,{passive:true});onS();})();
+    </script>
+</body>
+</html>
