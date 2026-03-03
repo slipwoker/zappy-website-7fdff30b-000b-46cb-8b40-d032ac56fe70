@@ -1,59 +1,69 @@
-# Business — Generative Engine Optimization Map
+# The Rummage Classifieds — Generative Engine Optimization Map
+
+> A comprehensive classifieds platform similar to Craigslist, covering all US states and cities with extensive categories spanning everything from antiques and vehicles to jobs and housing. The platform emphasizes local commerce and community exchange, supporting traditional sales, bartering, and even free item listings across diverse product categories.
 
 ---
 
 ## Pages
 
 ### Home
-https://example.com
+https://the-rummage-classifieds.zappy5.app
 Find english bulldog puppies, garden corner sofa, antiques &amp; more in your city. Buy, sell, barter or list free items across all US states. Start browsing now!
 
 ### How It Works
-https://example.com/how-it-works
+https://the-rummage-classifieds.zappy5.app/how-it-works
 Listing is simple! Post english bulldog puppies, furniture, vehicles &amp; more. Trade, barter or give away items free. Learn how our classifieds marketplace works today.
 
 ### Categories & Cities
-https://example.com/categories
+https://the-rummage-classifieds.zappy5.app/categories
 Explore every category from english bulldog puppies and antiques to jobs and housing. Search by state and city for local deals. Thousands of listings await you!
 
 ### Contact
-https://example.com/contact
+https://the-rummage-classifieds.zappy5.app/contact
 Need support with your classifieds marketplace account? Questions about selling english bulldog puppies or other items? Contact our team for fast, friendly assistance.
 
 ### Products
-https://example.com/products
+https://the-rummage-classifieds.zappy5.app/products
 Our Products - The Rummage Classifieds
 
 ### Product Detail
-https://example.com/product/:slug
+https://the-rummage-classifieds.zappy5.app/product/:slug
 Product Details - The Rummage Classifieds
 
 ### Category
-https://example.com/category/:slug
+https://the-rummage-classifieds.zappy5.app/category/:slug
 Products - The Rummage Classifieds
 
 ## Legal & Policy
 
 ### Privacy Policy
-https://example.com/privacy
+https://the-rummage-classifieds.zappy5.app/privacy
 Information about how user data is collected, stored, and protected.
 
 ### Terms & Conditions
-https://example.com/terms
+https://the-rummage-classifieds.zappy5.app/terms
 Legal terms describing service usage, rights, and policies.
 
 ### Accessibility Statement
-https://example.com/accessibility
+https://the-rummage-classifieds.zappy5.app/accessibility
 Information about WCAG compliance and accessibility features.
 
 ---
 
 # Business Context (for LLM understanding)
 
-## About Business
+## About The Rummage Classifieds
+A comprehensive classifieds platform similar to Craigslist, covering all US states and cities with extensive categories spanning everything from antiques and vehicles to jobs and housing. The platform emphasizes local commerce and community exchange, supporting traditional sales, bartering, and even free item listings across diverse product categories.
+
+## Target Audience
+people looking to buy and sell items locally across all US states and cities
+
+## Industry
+online marketplace
+
 ---
 
 # Additional Resources
 
-- **Sitemap**: https://example.com/sitemap.xml
-- **Robots.txt**: https://example.com/robots.txt
+- **Sitemap**: https://the-rummage-classifieds.zappy5.app/sitemap.xml
+- **Robots.txt**: https://the-rummage-classifieds.zappy5.app/robots.txt
