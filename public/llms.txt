@@ -1,6 +1,4 @@
-# The Rummage Classifieds — Generative Engine Optimization Map
-
-> A comprehensive classifieds platform similar to Craigslist, covering all US states and cities with extensive categories spanning everything from antiques and vehicles to jobs and housing. The platform emphasizes local commerce and community exchange, supporting traditional sales, bartering, and even free item listings across diverse product categories.
+# Business — Generative Engine Optimization Map
 
 ---
 
@@ -52,15 +50,7 @@ Information about WCAG compliance and accessibility features.
 
 # Business Context (for LLM understanding)
 
-## About The Rummage Classifieds
-A comprehensive classifieds platform similar to Craigslist, covering all US states and cities with extensive categories spanning everything from antiques and vehicles to jobs and housing. The platform emphasizes local commerce and community exchange, supporting traditional sales, bartering, and even free item listings across diverse product categories.
-
-## Target Audience
-people looking to buy and sell items locally across all US states and cities
-
-## Industry
-online marketplace
-
+## About Business
 ---
 
 # Additional Resources
